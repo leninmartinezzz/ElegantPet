@@ -55,7 +55,7 @@ class RegisterController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'rol' => User::ROL_USUARIO,
+                'rol' => User::ROL_ADMIN, // Asignar rol de administrador
             ]);
 
             return response()->json([
@@ -94,7 +94,7 @@ class RegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'rol' => User::ROL_USUARIO,
+            'rol' => User::ROL_ADMIN, // Asignar rol de administrador
         ]);
 
         return redirect()->route('login')
