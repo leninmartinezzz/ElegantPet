@@ -620,10 +620,10 @@
                         <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-paw"></i> Mascotas</a>
+                        <a class="nav-link" href="{{ route('agregar.mascota') }}"><i class="fas fa-paw"></i> Mascotas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('citas.usuario') }}"><i class="fas fa-calendar-alt"></i> Citas</a>
+                        <a class="nav-link" href="{{ route('citas.consulta') }}"><i class="fas fa-calendar-alt"></i> Citas</a>
                     </li>
                 </ul>
                 
