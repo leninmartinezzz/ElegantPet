@@ -435,16 +435,10 @@
                         <a class="nav-link active" href="#">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Productos</a>
+                        <a class="nav-link" href="#productos">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
+                        <a class="nav-link" href="#servicios">Servicios</a>
                     </li>
                 </ul>
                 <div class="d-flex">
@@ -470,114 +464,71 @@
     <!-- Featured Categories -->
     <section class="container mb-5">
         <h2 class="section-title">Categorías Populares</h2>
-        <div class="row">
-            <div class="col-md-3 col-6 mb-4 fade-in-up">
-                <div class="card text-center border-0 shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1596272875729-ed2ff7d6d9c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Alimentos">
-                    <div class="card-body">
-                        <h5 class="card-title">Alimentos</h5>
-                        <a href="#" class="btn btn-sm btn-outline-primary">Ver más</a>
+        <div class="row justify-content-center">
+            @if($categorias->count() > 0)
+                @foreach($categorias as $categoria)
+                    <div class="col-md-3 col-6 mb-4 fade-in-up">
+                        <div class="card text-center border-0 shadow-sm">
+                            <img src="{{ $categoria->imagen ? $categoria->imagen : asset('img/placeholder-category.jpg') }}" class="card-img-top" alt="{{ $categoria->nombre }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $categoria->nombre }}</h5>
+                                <a href="{{ route('login') }}" class="btn btn-sm btn-outline-primary">Ver más</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-6 mb-4 fade-in-up delay-1">
-                <div class="card text-center border-0 shadow-sm">
-                    <img src="https://media.istockphoto.com/id/1149531683/es/foto/perro-elige-y-obtiene-juguete-de-cuerda-de-la-acumulaci%C3%B3n-de-juguetes-para-mascotas-en-el.jpg?s=612x612&w=0&k=20&c=cUCUVdwBdO8u8cY09_hWbZb6TYLwWG595rEtujXOubw=" class="card-img-top" alt="Juguetes">
-                    <div class="card-body">
-                        <h5 class="card-title">Juguetes</h5>
-                        <a href="#" class="btn btn-sm btn-outline-primary">Ver más</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-6 mb-4 fade-in-up delay-2">
-                <div class="card text-center border-0 shadow-sm">
-                    <img src="https://static.vecteezy.com/system/resources/thumbnails/012/824/153/small_2x/dry-food-with-pets-accessories-on-red-background-photo.jpg" class="card-img-top" alt="Accesorios">
-                    <div class="card-body">
-                        <h5 class="card-title">Accesorios</h5>
-                        <a href="#" class="btn btn-sm btn-outline-primary">Ver más</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-6 mb-4 fade-in-up delay-3">
-                <div class="card text-center border-0 shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Salud">
-                    <div class="card-body">
-                        <h5 class="card-title">Salud</h5>
-                        <a href="#" class="btn btn-sm btn-outline-primary">Ver más</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+            @else
+                <div class="col-12 text-center">
+                    <div class="empty-state">
+                        <i class="fas fa-th-large fa-3x mb-3"></i>
+                        <h4>No hay categorías disponibles</h4>
+                        <p class="text-muted">Próximamente agregaremos nuevas categorías para tus mascotas.</p> 
+             @endif
         </div>
     </section>
 
     <!-- Featured Products -->
-    <section class="container mb-5">
-        <h2 class="section-title">Productos Destacados</h2>
+<section class="container mb-5" id="productos">
+    <h2 class="section-title">Productos Destacados</h2>
+    
+    @if($productos->count() > 0)
+        <div class="row justify-content-center">
+            @foreach($productos as $producto)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+                <div class="card h-100">
+                    <img src="{{ $producto->imagen ? $producto->imagen : asset('img/placeholder-product.jpg') }}" class="card-img-top" alt="{{ $producto->nombre }}" class="card-img-top" alt="Producto">
+                    <div class="card-body">
+                        <span class="category-badge">{{ $producto->categoria->nombre }}</span>
+                        <h5 class="card-title mt-2">{{ $producto->nombre }}</h5>
+                        <p class="card-text">{{ $producto->descripcion }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="price">${{ $producto->precio }}</span>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-shopping-cart"></i> Comprar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{{ route('login') }}" class="btn btn-outline-primary">Ver todos los productos</a>
+        </div>
+    @else
         <div class="row">
-            <div class="col-md-3 col-6 mb-4 fade-in-up">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1591946614720-90a587da4a36?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Producto 1">
-                    <div class="card-body">
-                        <span class="category-badge">Alimentos</span>
-                        <h5 class="card-title mt-2">Comida Premium para Perros</h5>
-                        <p class="card-text">Alimento balanceado con todos los nutrientes necesarios.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="price">$24.99</span>
-                            <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-shopping-cart"></i> Comprar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-6 mb-4 fade-in-up delay-1">
-                <div class="card">
-                    <img src="https://bodegadelamascota.cl/cdn/shop/files/IMG_4734_700x700.jpg?v=1716987923" class="card-img-top" alt="Producto 2">
-                    <div class="card-body">
-                        <span class="category-badge">Juguetes</span>
-                        <h5 class="card-title mt-2">Pelota Interactiva</h5>
-                        <p class="card-text">Juguete divertido para mantener entretenida a tu mascota.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="price">$12.99</span>
-                            <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-shopping-cart"></i> Comprar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-6 mb-4 fade-in-up delay-2">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Producto 3">
-                    <div class="card-body">
-                        <span class="category-badge">Accesorios</span>
-                        <h5 class="card-title mt-2">Cama Comfort</h5>
-                        <p class="card-text">Cama suave y cómoda para el descanso de tu mascota.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="price">$34.99</span>
-                            <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-shopping-cart"></i> Comprar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-6 mb-4 fade-in-up delay-3">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Producto 4">
-                    <div class="card-body">
-                        <span class="category-badge">Salud</span>
-                        <h5 class="card-title mt-2">Shampoo Hidratante</h5>
-                        <p class="card-text">Shampoo especial para cuidado de la piel y pelaje.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="price">$9.99</span>
-                            <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-shopping-cart"></i> Comprar</a>
-                        </div>
-                    </div>
+            <div class="col-12 text-center">
+                <div class="empty-state">
+                    <i class="fas fa-boxes fa-3x mb-3"></i>
+                    <h4>No hay productos disponibles</h4>
+                    <p class="text-muted">Próximamente tendremos nuevos productos para ti.</p>
                 </div>
             </div>
         </div>
-        <div class="text-center mt-4 fade-in-up">
-            <a href="#" class="btn btn-outline-primary">Ver todos los productos</a>
-        </div>
-    </section>
+    @endif
+</section>
 
     <!-- Services Section -->
-    <section class="services-section">
+    <section class="services-section" id="servicios">
         <div class="container services-content">
             <h2 class="section-title">Nuestros Servicios</h2>
             <div class="row">

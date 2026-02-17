@@ -9,6 +9,7 @@ use App\Http\Controllers\CitaController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ArticulosController;
 use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\index;
 
 Route::get('/', function () {
     return Response::file(public_path('index.html'));
@@ -24,6 +25,8 @@ Route::get('citas', function () {
 })->middleware(['auth', 'verified'])->name('citas');
 
 Route::get('/dashboard', [Dashboard::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+route::get('/', [index::class, 'index'])->name('index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
