@@ -693,7 +693,11 @@
                     <div class="stat-icon">
                         <i class="fas fa-paw"></i>
                     </div>
-                    <div class="stat-number">3</div>
+                    @if(isset($mascotas_usuario))
+                    <div class="stat-number">{{ $mascotas_usuario }}</div>
+                    @else
+                    <div class="stat-number">0</div>
+                    @endif
                     <div class="stat-label">Mascotas Registradas</div>
                 </div>
                 
@@ -701,7 +705,7 @@
                     <div class="stat-icon">
                         <i class="fas fa-shopping-cart"></i>
                     </div>
-                    <div class="stat-number">12</div>
+                    <div class="stat-number">0</div>
                     <div class="stat-label">Pedidos Realizados</div>
                 </div>
                 
@@ -709,7 +713,11 @@
                     <div class="stat-icon">
                         <i class="fas fa-calendar-check"></i>
                     </div>
-                    <div class="stat-number">5</div>
+                    @if(isset($citas_usuario))
+                    <div class="stat-number">{{ $citas_usuario }}</div>
+                    @else
+                    <div class="stat-number">0</div>
+                    @endif
                     <div class="stat-label">Citas Programadas</div>
                 </div>
                 

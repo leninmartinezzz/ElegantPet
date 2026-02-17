@@ -61,7 +61,9 @@ class MascotaController extends Controller
      */
     public function show(mascota $mascota)
     {
-        //
+        $mascota = mascota::all()->where('cliente_id', Auth::id());
+        $mascota_cantidad = $mascota->count();
+        return view('dashboard', compact('mascota', 'mascota_cantidad'));
     }
 
     /**

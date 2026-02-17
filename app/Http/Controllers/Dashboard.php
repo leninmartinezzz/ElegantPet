@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\categoria;
 use App\Models\articulos;
+use App\Models\mascota;
+use App\Models\cita;
 use Illuminate\Http\Request;
 
 class Dashboard extends Controller
@@ -22,6 +24,10 @@ class Dashboard extends Controller
             ->take(8) // Limitar a 8 productos para el dashboard
             ->get();
 
-        return view('dashboard', compact('categorias', 'productos'));
+         $mascotas_usuario = mascota::where('cliente_id', auth()->id())->count();   
+
+         $citas_usuario = cita::where('cliente_id', auth()->id())->count();
+
+        return view('dashboard', compact('categorias', 'productos', 'mascotas_usuario', 'citas_usuario'));
     }
 }
