@@ -455,8 +455,8 @@
             <h1 class="display-4 fw-bold mb-4 fade-in-up">Todo para consentir a tu mascota</h1>
             <p class="lead mb-4 fade-in-up delay-1">Encuentra los mejores productos y servicios para el cuidado de tus animales domésticos</p>
             <div class="fade-in-up delay-2">
-                <a href="#" class="btn btn-primary btn-lg me-2">Ver Productos</a>
-                <a href="#" class="btn btn-outline-light btn-lg">Nuestros Servicios</a>
+                <a href="{{ route('login') }}" class="btn btn-primary btn-lg me-2">Ver Productos</a>
+                <a href="#servicios" class="btn btn-outline-light btn-lg">Nuestros Servicios</a>
             </div>
         </div>
     </section>
@@ -482,7 +482,8 @@
                     <div class="empty-state">
                         <i class="fas fa-th-large fa-3x mb-3"></i>
                         <h4>No hay categorías disponibles</h4>
-                        <p class="text-muted">Próximamente agregaremos nuevas categorías para tus mascotas.</p> 
+                        <p class="text-muted">Próximamente agregaremos nuevas categorías para tus mascotas. Si quieres ver categorias registrate o inicia sesión crea uno nuevo!.</p> 
+                        <a href="{{ route('login') }}" class="btn btn-outline-primary mt-3"><i class="fas fa-user"></i> Iniciar Sesión</a> 
              @endif
         </div>
     </section>
@@ -520,7 +521,8 @@
                 <div class="empty-state">
                     <i class="fas fa-boxes fa-3x mb-3"></i>
                     <h4>No hay productos disponibles</h4>
-                    <p class="text-muted">Próximamente tendremos nuevos productos para ti.</p>
+                    <p class="text-muted">Próximamente tendremos nuevos productos para ti, Si quieres ver productos registrate o inicia sesión crea uno nuevo!.</p>
+                    <a href="{{ route('login') }}" class="btn btn-outline-primary mt-3"><i class="fas fa-user"></i> Iniciar Sesión</a>   
                 </div>
             </div>
         </div>
